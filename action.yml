@@ -1,19 +1,16 @@
 name: 'Check Migrations'
-description: 'A GitHub Action to check a web framework's migrations'
+description: 'A GitHub Action to check a web frameworks migrations'
 branding:
   icon: 'check-circle'
   color: 'green'
-
 inputs:
   framework:
     description: 'Framework to use'
     required: true
     default: 'django'
-
   path:
     description: 'Path to the app'
     required: true
-
 runs:
   using: 'docker'
   image: 'Dockerfile'
