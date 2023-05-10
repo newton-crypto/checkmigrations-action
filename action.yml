@@ -9,8 +9,6 @@ inputs:
     description: 'Framework to use'
     required: true
     default: 'django'
-    options:
-      - 'django'
 
   path:
     description: 'Path to the app'
