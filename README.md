@@ -21,7 +21,19 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+          fetch-depth: 0
 
+    # This part is important if you wish to run this action against a base branch. 
+    - name: Merge base branch
+      if: github.event_name == 'pull_request'
+      run: |
+        git fetch origin ${{ github.base_ref }}
+        git checkout -b temp-merge-branch
+        git branch -u origin/${{ github.base_ref }}
+        git pull --no-ff --no-edit || true
+
+    # This runs the actual lightweight check
     - name: Run Check Migrations Action
       uses: jdboisvert/checkmigrations-action@main
       with:
