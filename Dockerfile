@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM public.ecr.aws/newton/rust
 
 # Install your CLI tool
 RUN cargo install checkmigrations --git https://github.com/jdboisvert/checkmigrations.git
